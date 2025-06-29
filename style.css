@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #eae3d2;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  color: #1D372F;
+}
+header {
+  background: #1D372F;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+.logo {
+  height: 100px;
+}
+nav a {
+  margin: 0 1rem;
+  color: #C8A14F;
+  text-decoration: none;
+  font-weight: bold;
+}
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}

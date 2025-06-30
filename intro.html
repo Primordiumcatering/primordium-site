@@ -20,7 +20,7 @@
     #intro {
       text-align: center;
       opacity: 1;
-      transition: opacity 1s ease;
+      transition: opacity 1.5s ease;
     }
     #logo {
       width: 200px;
@@ -86,13 +86,14 @@
         slogan.style.opacity = '1';
       }, 3200);
 
-      // Fondu et redirection finale
+      // Fondu en douceur et redirection finale
       function endIntro() {
         intro.style.opacity = '0';
         skip.style.opacity = '0';
+        // Attendre la fin du fondu avant redirection
         setTimeout(() => {
           window.location.href = 'index.html';
-        }, 1000);
+        }, 1500);
       }
 
       setTimeout(endIntro, 5500);

@@ -1,0 +1,49 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1D372F;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+}
+#intro {
+  text-align: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+#logo {
+  width: 200px;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin-bottom: 20px;
+}
+#name {
+  color: #C8A14F;
+  font-size: 2em;
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+#slogan {
+  color: #C8A14F;
+  font-size: 1.2em;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+#skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: 1px solid #C8A14F;
+  color: #C8A14F;
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}

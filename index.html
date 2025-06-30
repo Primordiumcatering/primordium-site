@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <script>
-    if (!localStorage.getItem('introShown')) {
-      localStorage.setItem('introShown', 'true');
-      window.location.replace('intro.html');
-    }
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Accueil - Primordium Catering</title>
-  <link rel="stylesheet" href="css/index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primordium Catering</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Lato:400,700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="page-home">
-  <header id="site-header">
-    <img src="assets/logo_rond.svg" id="logo-header" alt="Primordium Logo">
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="le-projet.html">Le Projet</a></li>
-        <li><a href="offre-services.html">Offre & Services</a></li>
-        <li><a href="engagements.html">Engagements</a></li>
-        <li><a href="equipe.html">Équipe</a></li>
-        <li><a href="galerie.html">Galerie</a></li>
-        <li><a href="references.html">Références</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section id="hero">
-    <img src="assets/logo_rond.svg" id="logo-hero" alt="Primordium Logo">
-    <blockquote class="accent">“Primordium Catering : l’art du vegan au cœur du cinéma.”</blockquote>
-    <p class="accent">Site en construction – lancement officiel début 2026.</p>
-  </section>
-  <main id="content">
-    <p>Petite description légère qui indique que le site est en construction et arrivera en 2026.</p>
-  </main>
-  <footer>
-    <p>Suivez-nous dès maintenant (Instagram • Facebook — à venir).</p>
-    <p>© 2025 Primordium Catering — Tous droits réservés</p>
-  </footer>
-  <script src="js/app.js"></script>
+<body>
+    <!-- Animation d’intro -->
+    <div id="intro-animation" class="intro-animation">
+        <canvas id="animation-canvas"></canvas>
+        <button id="skip-btn">Skip</button>
+    </div>
+
+    <!-- Contenu principal du site -->
+    <div id="main-content" class="main-content" style="display:none;">
+        <header>
+            <img src="assets/logo_primordium_points_couleur_tronc.png" alt="Logo Primordium Catering" class="logo">
+            <h1>Primordium Catering</h1>
+            <p class="slogan">Du goût, du sens.</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Le projet</a></li>
+                <li><a href="#">Offre & Services</a></li>
+                <li><a href="#">Engagements</a></li>
+                <li><a href="#">Galerie / Références</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="presentation">
+                <h2>Cuisine mobile, engagée, humaine</h2>
+                <p>
+                    Primordium Catering propose une restauration haut de gamme, mobile et écoresponsable pour les tournages de cinéma.
+                    Des repas de qualité, adaptés à toutes et tous, dans le respect du vivant, des saisons et de chaque équipe.
+                </p>
+            </section>
+            <!-- ... (autres sections à compléter selon besoin) ... -->
+        </main>
+        <footer>
+            <span>© 2025 Primordium Catering — Tous droits réservés.</span>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

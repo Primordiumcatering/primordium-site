@@ -2,14 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <!-- Redirection vers l’intro si elle n’a pas encore été vue -->
   <script>
-  // Si l'intro a déjà été vue, on passe directement à index.html
-  if (!localStorage.getItem('introShown')) {
-    // première visite : on la marque et on redirige vers l'animation
-    localStorage.setItem('introShown', 'true');
-    window.location.replace('intro.html');
-  }
-</script>
+    if (!localStorage.getItem('introShown')) {
+      localStorage.setItem('introShown', 'true');
+      window.location.replace('intro.html');
+    }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Primordium Catering</title>
   <link rel="stylesheet" href="index.css" />
@@ -25,8 +25,15 @@
       <a href="#" data-page="contact">Contact</a>
     </nav>
   </header>
-  <main id="content"></main>
-  <footer>© 2025 Primordium Catering — Tous droits réservés</footer>
+
+  <main id="content">
+    <!-- Ton contenu dynamique chargé par app.js -->
+  </main>
+
+  <footer>
+    © 2025 Primordium Catering — Tous droits réservés
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>

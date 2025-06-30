@@ -1,0 +1,191 @@
+/* --- Palette Primordium Catering --- */
+:root {
+  --vert-fonce: #1D372F;
+  --dore: #C8A14F;
+  --beige-fond: #f5f1ea;
+  --beige-texte: #ede6d7;
+  --beige-kraft: #e9dbc3;
+  --texte-titre: 'Playfair Display', serif;
+  --texte-corps: 'Lato', Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--beige-fond);
+  color: var(--vert-fonce);
+  font-family: var(--texte-corps);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header {
+  background: var(--vert-fonce);
+  color: var(--dore);
+  padding: 2.5rem 0 2rem 0;
+  text-align: center;
+}
+
+header .logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-family: var(--texte-titre);
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  margin: 0.5rem 0 0 0;
+}
+
+.slogan {
+  font-family: var(--texte-titre);
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 0.4rem 0 0.2rem 0;
+  color: var(--dore);
+}
+
+nav {
+  background: var(--beige-kraft);
+  padding: 1.1rem 0;
+  box-shadow: 0 1px 4px rgba(30,50,40,0.06);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--vert-fonce);
+  font-family: var(--texte-titre);
+  font-size: 1.15rem;
+  text-decoration: none;
+  transition: color 0.18s;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--dore);
+  transition: width 0.25s;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+nav a:hover {
+  color: var(--dore);
+}
+
+.presentation {
+  max-width: 750px;
+  margin: 3rem auto 2.5rem auto;
+  background: var(--beige-texte);
+  border-radius: 2rem;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(29,55,47,0.09);
+  text-align: center;
+}
+
+.presentation h2 {
+  font-family: var(--texte-titre);
+  font-size: 2rem;
+  color: var(--vert-fonce);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+footer {
+  background: var(--vert-fonce);
+  color: var(--dore);
+  text-align: center;
+  padding: 1.3rem 0;
+  letter-spacing: 1px;
+  margin-top: 3rem;
+  font-size: 1.05rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* --- Animation d'intro --- */
+.intro-animation {
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: var(--beige-kraft);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1.1s;
+}
+
+#animation-canvas {
+  width: 450px;
+  height: 450px;
+  max-width: 98vw;
+  max-height: 70vh;
+  background: transparent;
+  display: block;
+}
+
+#skip-btn {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.5rem;
+  background: rgba(255,255,255,0.82);
+  color: var(--vert-fonce);
+  border: 2px solid var(--dore);
+  border-radius: 1.5rem;
+  padding: 0.38rem 1.1rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  opacity: 0.78;
+  transition: opacity 0.2s, background 0.2s;
+  z-index: 1001;
+}
+
+#skip-btn:hover {
+  opacity: 1;
+  background: var(--dore);
+  color: var(--vert-fonce);
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  header .logo {
+    width: 55px;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  .slogan {
+    font-size: 1.07rem;
+  }
+  nav ul {
+    gap: 1.2rem;
+  }
+  .presentation {
+    padding: 1.2rem 0.7rem;
+    margin: 1.5rem 0.2rem;
+    font-size: 1.01rem;
+  }
+  #animation-canvas {
+    width: 96vw;
+    height: 39vh;
+    max-width: 99vw;
+    max-height: 47vw;
+  }
+}

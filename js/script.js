@@ -5,7 +5,7 @@ const slogan = document.getElementById('intro-slogan');
 const skipBtn = document.getElementById('skip-btn');
 const mainContent = document.getElementById('main-content');
 const headerLogo = document.getElementById('header-logo');
-const header = document.getElementById('site-header');
+const fadeOverlay = document.getElementById('site-fade-overlay');
 
 function showLogo() {
     logo.classList.add('visible');
@@ -23,46 +23,44 @@ function showSlogan() {
 }
 
 function startLogoMove() {
-    // Disparition du nom/slogan pendant la montée
     title.classList.add('fadeout');
     slogan.classList.add('fadeout');
-    // Lancer la translation du logo vers le header
+    // Animation de montée verticale du logo (même left, juste top change)
     logo.classList.add('animate-to-header');
     setTimeout(() => {
-        logo.classList.add('in-header');
-        // Afficher le site après la translation
-        setTimeout(finishIntro, 1100);
-    }, 100); // léger délai pour déclencher la transition CSS proprement
+        finishIntro();
+    }, 1200); // durée de la montée
 }
 
 function finishIntro() {
-    overlay.style.opacity = 0;
+    // On montre le site (header + logo déjà bien placés)
+    mainContent.style.display = "block";
+    // On affiche le fadeOverlay sur tout le site sauf le header
+    fadeOverlay.style.display = "block";
+    // On masque tout sauf le header (le header est déjà apparent)
     setTimeout(() => {
-        overlay.style.display = "none";
-        mainContent.style.display = "block";
-        // On affiche aussi le logo du header comme backup (pour accessibilité/menu)
-        headerLogo.classList.add('visible');
-        // On s'assure que le logo animé ne gêne plus la navigation
+        fadeOverlay.classList.add('fadeout');
+        // Après le fadeout, on supprime l'overlay et le logo animé
         setTimeout(() => {
-            logo.style.display = 'none';
-        }, 400);
-    }, 800);
+            overlay.style.display = "none";
+            fadeOverlay.style.display = "none";
+            logo.style.display = 'none'; // cache le logo animé, on garde seulement celui du header
+        }, 1100);
+    }, 80);
 }
 
 function skipIntro() {
-    // Affiche direct, saute animation
-    logo.classList.add('visible', 'animate-to-header', 'in-header');
+    logo.classList.add('visible', 'animate-to-header');
     title.classList.add('fadeout');
     slogan.classList.add('fadeout');
-    overlay.style.opacity = 0;
+    mainContent.style.display = "block";
+    fadeOverlay.style.display = "block";
+    fadeOverlay.classList.add('fadeout');
     setTimeout(() => {
         overlay.style.display = "none";
-        mainContent.style.display = "block";
-        headerLogo.classList.add('visible');
-        setTimeout(() => {
-            logo.style.display = 'none';
-        }, 400);
-    }, 300);
+        fadeOverlay.style.display = "none";
+        logo.style.display = 'none';
+    }, 600);
 }
 
 // -------- ANIMATION SEQUENCE --------
@@ -70,11 +68,14 @@ function startIntroSequence() {
     mainContent.style.display = "none";
     overlay.style.opacity = 1;
     overlay.style.display = "flex";
-    logo.classList.remove('visible', 'animate-to-header', 'in-header');
+    logo.classList.remove('visible', 'animate-to-header');
     logo.style.display = '';
     title.classList.remove('visible', 'fadeout');
     slogan.classList.remove('visible', 'fadeout');
-    headerLogo.classList.remove('visible');
+    // headerLogo reste affiché, pas besoin de manip
+
+    fadeOverlay.style.display = "none";
+    fadeOverlay.classList.remove('fadeout');
 
     // Noir → vert foncé (background)
     setTimeout(() => {

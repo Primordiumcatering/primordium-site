@@ -2,6 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <script>
+  // Si l'intro a déjà été vue, on passe directement à index.html
+  if (!localStorage.getItem('introShown')) {
+    // première visite : on la marque et on redirige vers l'animation
+    localStorage.setItem('introShown', 'true');
+    window.location.replace('intro.html');
+  }
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Primordium Catering</title>
   <link rel="stylesheet" href="index.css" />

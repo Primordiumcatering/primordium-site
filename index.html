@@ -11,17 +11,19 @@
 </head>
 <body>
     <!-- Animation d’intro -->
-    <div id="intro-animation" class="intro-animation">
-        <canvas id="animation-canvas"></canvas>
-        <button id="skip-btn">Skip</button>
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="center-box">
+            <img src="assets/logo_rond_signature.svg" alt="Logo Primordium Catering" id="intro-logo" class="intro-logo" draggable="false" />
+            <h1 id="intro-title" class="intro-title">Primordium Catering</h1>
+            <div id="intro-slogan" class="intro-slogan">Du goût, du sens.</div>
+        </div>
+        <button id="skip-btn" class="skip-btn">Skip</button>
     </div>
 
     <!-- Contenu principal du site -->
-    <div id="main-content" class="main-content" style="display:none;">
+    <div id="main-content" class="main-content">
         <header>
-            <img src="assets/logo_primordium_points_couleur_tronc.png" alt="Logo Primordium Catering" class="logo">
-            <h1>Primordium Catering</h1>
-            <p class="slogan">Du goût, du sens.</p>
+            <img src="assets/logo_rond_signature.svg" alt="Logo Primordium Catering" class="logo-header">
         </header>
         <nav>
             <ul>

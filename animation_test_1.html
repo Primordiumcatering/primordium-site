@@ -8,128 +8,93 @@
     body, html {
       margin: 0;
       padding: 0;
-      background-color: black;
-      overflow: hidden;
-      height: 100vh;
-      font-family: 'Playfair Display', serif;
-      transition: background-color 3s ease;
-    }
-    #container {
-      position: relative;
       width: 100%;
       height: 100%;
+      background-color: #1D372F;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      transition: opacity 0.5s ease;
+      font-family: 'Playfair Display', serif;
     }
-    .line {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      height: 1px;
-      background: #C8A14F;
-      width: 0;
-      transform-origin: left;
-      transition: width 1.5s ease-out;
+    #intro {
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease;
     }
-    .seed {
-      position: absolute;
-      top: -50px;
-      width: 16px;
-      height: 22px;
-      background: #C8A14F;
-      border-radius: 60% 40% 60% 40% / 70% 30% 70% 30%;
-      transform: rotate(20deg);
-      opacity: 0;
-      transition: top 0.8s ease-out, opacity 0.3s ease-in;
-    }
-    svg .anim { opacity: 0; }
-    #logoContainer svg {
-      width: 250px;
+    #logo {
+      width: 200px;
       height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    .name, .slogan {
-      position: absolute;
-      color: #C8A14F;
       opacity: 0;
-      transition: opacity 1s ease-in;
+      transition: opacity 1s ease;
+      margin-bottom: 20px;
     }
-    .name { top: 68%; font-size: 2em; }
-    .slogan { top: 76%; font-size: 1.2em; }
+    #name {
+      color: #C8A14F;
+      font-size: 2em;
+      margin: 10px 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    #slogan {
+      color: #C8A14F;
+      font-size: 1.2em;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
     #skip {
       position: absolute;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
       background: none;
       border: 1px solid #C8A14F;
       color: #C8A14F;
       padding: 5px 10px;
       cursor: pointer;
-      font-family: inherit;
-      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
   </style>
 </head>
 <body>
-  <div id="container">
-    <div class="line" id="line"></div>
-    <div class="seed" id="seed"></div>
-    <div id="logoContainer"></div>
-    <div class="name" id="name">Primordium Catering</div>
-    <div class="slogan" id="slogan">Du goût, du sens.</div>
-    <button id="skip">Skip</button>
+  <div id="intro">
+    <img id="logo" src="logo_rond.svg" alt="Primordium Logo">
+    <div id="name">Primordium Catering</div>
+    <div id="slogan">Du goût, du sens.</div>
   </div>
+  <button id="skip">Skip</button>
+
   <script>
-    const body = document.body;
-    const container = document.getElementById('logoContainer');
-    // Charger le vrai SVG du logo
-    fetch('logo_rectifié.svg')
-      .then(res => res.text())
-      .then(svg => {
-        container.innerHTML = svg;
-        // Après injection, démarrer l'animation
-        startAnimation();
-      });
-    function startAnimation() {
-      setTimeout(() => {
-        document.getElementById('line').style.width = '100%';
-        body.style.backgroundColor = '#1D372F';
-      }, 500);
-      setTimeout(() => {
-        const seed = document.getElementById('seed');
-        seed.style.top = '50%'; seed.style.opacity = 1;
-      }, 2000);
-      setTimeout(() => {
-        ['tronc','racines'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) { el.classList.remove('anim'); el.style.opacity = 1; }
-        });
-      }, 3000);
-      setTimeout(() => {
-        ['feuille_1','feuille_2'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) {
-            el.classList.remove('anim'); el.style.opacity = 1;
-            el.style.transform = 'rotate(360deg)';
-            el.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
-          }
-        });
-      }, 4200);
-      setTimeout(() => {
-        for (let i = 1; i <= 6; i++) {
-          const el = document.getElementById('point' + i);
-          if (el) setTimeout(() => { el.classList.remove('anim'); el.style.opacity = 1; }, i * 150);
-        }
-      }, 5000);
-      setTimeout(() => { document.getElementById('name').style.opacity = 1; }, 6200);
-      setTimeout(() => { document.getElementById('slogan').style.opacity = 1; }, 7100);
-      setTimeout(() => { body.style.backgroundColor = '#f0e6d6'; const containerEl = document.getElementById('container'); containerEl.style.opacity = '0'; setTimeout(() => { containerEl.innerHTML = ''; containerEl.style.opacity = ''; }, 500); }, 8500);
-      document.getElementById('skip').addEventListener('click', () => { body.style.backgroundColor = '#f0e6d6'; const containerEl = document.getElementById('container'); containerEl.style.opacity = '0'; setTimeout(() => { containerEl.innerHTML = ''; containerEl.style.opacity = ''; }, 500); });
+    // Ne pas afficher l'intro si déjà vue
+    if (localStorage.getItem('introShown')) {
+      window.location.href = 'index.html';
+    } else {
+      localStorage.setItem('introShown', 'true');
     }
+    document.addEventListener('DOMContentLoaded', () => {
+      const logo = document.getElementById('logo');
+      const name = document.getElementById('name');
+      const slogan = document.getElementById('slogan');
+      const skip = document.getElementById('skip');
+      const intro = document.getElementById('intro');
+
+      // Step timings
+      setTimeout(() => { logo.style.opacity = '1'; skip.style.opacity = '1'; }, 500);
+      setTimeout(() => { name.style.opacity = '1'; }, 1500);
+      setTimeout(() => { slogan.style.opacity = '1'; }, 2500);
+
+      // Fade out and redirect to homepage
+      function endIntro() {
+        intro.style.opacity = '0';
+        skip.style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      }
+
+      setTimeout(endIntro, 4000);
+      skip.addEventListener('click', endIntro);
+    });
   </script>
 </body>
 </html>

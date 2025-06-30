@@ -1,6 +1,6 @@
 
 const pages = {
-  "accueil": `<h2>Bienvenue sur le site de Primordium Catering</h2><p>Primordium, c’est une cuisine mobile pensée pour les tournages.
+  "accueil": `<h2>Bienvenue sur le site de Primordium Catering, celui ci est en construction </h2><p>Primordium, c’est une cuisine mobile pensée pour les tournages.
 Une présence discrète mais essentielle, là où les histoires se fabriquent.
 
 La précision du geste, le goût juste, l’harmonie subtile.

@@ -1,4 +1,3 @@
-/* --- Palette Primordium Catering --- */
 :root {
   --vert-fonce: #1D372F;
   --dore: #C8A14F;
@@ -9,7 +8,97 @@
   --texte-corps: 'Lato', Arial, sans-serif;
 }
 
-html, body {
+/* ---------- INTRO OVERLAY ---------- */
+.intro-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: #000;
+  transition: background 1.4s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.intro-overlay.fond-vert {
+  background: var(--vert-fonce);
+}
+
+.center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-logo {
+  width: 160px;
+  max-width: 60vw;
+  opacity: 0;
+  transition: opacity 1.1s;
+  margin-bottom: 2.1rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+.intro-logo.visible {
+  opacity: 1;
+}
+
+.intro-title {
+  font-family: var(--texte-titre);
+  font-size: 2.5rem;
+  color: var(--dore);
+  letter-spacing: 1px;
+  margin: 0 0 0.7rem 0;
+  opacity: 0;
+  transition: opacity 1.1s;
+  text-align: center;
+}
+
+.intro-title.visible {
+  opacity: 1;
+}
+
+.intro-slogan {
+  font-family: var(--texte-titre);
+  font-style: italic;
+  font-size: 1.28rem;
+  color: var(--dore);
+  opacity: 0;
+  margin-bottom: 0.2rem;
+  transition: opacity 1.1s;
+  text-align: center;
+}
+
+.intro-slogan.visible {
+  opacity: 1;
+}
+
+.skip-btn {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.5rem;
+  background: rgba(255,255,255,0.82);
+  color: var(--vert-fonce);
+  border: 2px solid var(--dore);
+  border-radius: 1.5rem;
+  padding: 0.38rem 1.1rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  opacity: 0.78;
+  transition: opacity 0.2s, background 0.2s;
+  z-index: 1001;
+}
+.skip-btn:hover {
+  opacity: 1;
+  background: var(--dore);
+  color: var(--vert-fonce);
+}
+
+body, html {
   margin: 0;
   padding: 0;
   background: var(--beige-fond);
@@ -27,9 +116,12 @@ header {
   text-align: center;
 }
 
-header .logo {
+.logo-header {
   width: 80px;
   margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
@@ -119,53 +211,9 @@ footer {
   border-radius: 1rem 1rem 0 0;
 }
 
-/* --- Animation d'intro --- */
-.intro-animation {
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: var(--beige-kraft);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 1.1s;
-}
-
-#animation-canvas {
-  width: 450px;
-  height: 450px;
-  max-width: 98vw;
-  max-height: 70vh;
-  background: transparent;
-  display: block;
-}
-
-#skip-btn {
-  position: absolute;
-  top: 2.2rem;
-  right: 2.5rem;
-  background: rgba(255,255,255,0.82);
-  color: var(--vert-fonce);
-  border: 2px solid var(--dore);
-  border-radius: 1.5rem;
-  padding: 0.38rem 1.1rem;
-  font-size: 1.08rem;
-  cursor: pointer;
-  opacity: 0.78;
-  transition: opacity 0.2s, background 0.2s;
-  z-index: 1001;
-}
-
-#skip-btn:hover {
-  opacity: 1;
-  background: var(--dore);
-  color: var(--vert-fonce);
-}
-
 /* --- Responsive --- */
 @media (max-width: 600px) {
-  header .logo {
+  .logo-header {
     width: 55px;
   }
   h1 {
@@ -182,10 +230,8 @@ footer {
     margin: 1.5rem 0.2rem;
     font-size: 1.01rem;
   }
-  #animation-canvas {
-    width: 96vw;
-    height: 39vh;
-    max-width: 99vw;
-    max-height: 47vw;
+  .intro-logo {
+    width: 90vw;
+    max-width: 190px;
   }
 }

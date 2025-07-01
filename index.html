@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primordium Catering</title>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Lato:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Primordium Catering</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Animation d’intro -->
-    <div id="intro-overlay" class="intro-overlay">
-        <div class="center-box">
-            <img src="assets/logo_rond_signature.svg" alt="Logo Primordium Catering" id="intro-logo" class="intro-logo" draggable="false" />
-            <h1 id="intro-title" class="intro-title">Primordium Catering</h1>
-            <div id="intro-slogan" class="intro-slogan">Du goût, du sens.</div>
-        </div>
-        <button id="skip-btn" class="skip-btn">Skip</button>
+  <!-- Animation intro -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div id="logo-container" class="logo-container">
+      <img id="primordium-logo" src="assets/logo_rond.svg" alt="Logo Primordium" />
     </div>
-    <!-- Overlay pour fade-in du site -->
-    <div id="site-fade-overlay" class="site-fade-overlay"></div>
+    <div id="intro-text" class="intro-text">
+      <h1>Primordium Catering</h1>
+      <p class="slogan">Du goût, du sens.</p>
+    </div>
+    <button id="skip-btn" class="skip-btn" aria-label="Passer l'intro">Skip</button>
+    <button id="mute-btn" class="mute-btn" aria-label="Désactiver/Activer le son">🔊</button>
+  </div>
 
-    <!-- Contenu principal du site -->
-    <div id="main-content" class="main-content">
-        <header id="site-header">
-            <img src="assets/logo_rond_signature.svg" alt="Logo Primordium Catering" id="header-logo" class="logo-header">
-        </header>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Le projet</a></li>
-                <li><a href="#">Offre & Services</a></li>
-                <li><a href="#">Engagements</a></li>
-                <li><a href="#">Galerie / Références</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <main>
-            <section class="presentation">
-                <h2>Cuisine mobile, engagée, humaine</h2>
-                <p>
+  <!-- Site principal -->
+  <header class="site-header">
+    <div class="header-inner">
+      <img id="header-logo" src="assets/logo_rond.svg" alt="Logo Primordium" />
+      <!-- <span class="header-title">Primordium Catering</span> -->
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Le projet</a></li>
+        <li><a href="#">Offre & Services</a></li>
+        <li><a href="#">Engagements</a></li>
+        <li><a href="#">Galerie</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Ton contenu ici -->
+    <section>
+      <h2>Bienvenue sur Primordium Catering, le site est en construction</h2>
+      <p>
                     Primordium Catering propose une restauration haut de gamme, mobile et écoresponsable pour les tournages de cinéma.
                     Des repas de qualité, adaptés à toutes et tous, dans le respect du vivant, des saisons et de chaque équipe.
                 </p>
-            </section>
-        </main>
-        <footer>
-            <span>© 2025 Primordium Catering — Tous droits réservés.</span>
-        </footer>
-    </div>
+    </section>
+  </main>
 
-    <script src="js/script.js"></script>
+  <footer class="site-footer">
+    <span>© 2025 Primordium Catering — Tous droits réservés.</span>
+  </footer>
+
+  <!-- Audio -->
+  <audio id="audio-breeze" src="assets/sounds/primordium_brise.mp3" preload="auto"></audio>
+  <audio id="audio-tint" src="assets/sounds/primordium_tintement.mp3" preload="auto"></audio>
+  <audio id="audio-whoosh" src="assets/sounds/primordium_rideau.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
 </body>
 </html>

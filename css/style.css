@@ -30,20 +30,6 @@ main#main-content {
   padding-top: 32px;
 }
 
-.site-footer {
-  flex-shrink: 0;
-  margin-top: 0;
-  background: var(--vert-fonce);
-  color: var(--dore);
-  text-align: center;
-  padding: 1.3rem 0;
-  letter-spacing: 1px;
-  font-size: 1.05rem;
-  border-radius: 1rem 1rem 0 0;
-  box-shadow: 0 -2px 12px rgba(29,55,47,0.09);
-  border-top: 2px solid var(--dore);
-}
-
 /* ------------------- ANIMATION INTRO ------------------- */
 .intro-overlay {
   position: fixed;
@@ -70,7 +56,7 @@ main#main-content {
 .intro-logo {
   width: 260px;
   max-width: 92vw;
-  margin-bottom: 38px;
+  margin-bottom: 80px;
   opacity: 1;
   position: relative;
   transition: 
@@ -81,11 +67,14 @@ main#main-content {
     width 1.1s cubic-bezier(.68,-0.55,.27,1.55);
   z-index: 10;
 }
+.intro-logo.fadeout {
+  opacity: 0;
+}
 .intro-logo.animate-to-header {
   position: fixed !important;
   top: 36px;
   left: 50%;
-  width: 120px;
+  width: 170px;
   margin-bottom: 0;
   transform: translateX(-50%) scale(1);
   z-index: 20;
@@ -118,45 +107,6 @@ main#main-content {
 .intro-slogan.visible { opacity: 1; }
 .intro-slogan.fadeout { opacity: 0; transition: opacity 0.7s; }
 
-.skip-btn, .mute-btn {
-  position: absolute;
-  top: 2.2rem;
-  background: rgba(255,255,255,0.82);
-  color: var(--vert-fonce);
-  border: 2px solid var(--dore);
-  border-radius: 1.5rem;
-  padding: 0.38rem 1.1rem;
-  font-size: 1.08rem;
-  cursor: pointer;
-  opacity: 0.78;
-  transition: opacity 0.2s, background 0.2s;
-  z-index: 1001;
-}
-.skip-btn { right: 2.5rem; }
-.mute-btn { left: 2.5rem; }
-.skip-btn:hover, .mute-btn:hover {
-  opacity: 1;
-  background: var(--dore);
-  color: var(--vert-fonce);
-}
-
-/* Overlay qui fade le site */
-.site-fade-overlay {
-  display: none;
-  position: fixed;
-  z-index: 800;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none;
-  background: var(--beige-kraft);
-  opacity: 1;
-  transition: opacity 1.1s;
-}
-.site-fade-overlay.fadeout {
-  opacity: 0;
-  transition: opacity 1.1s;
-}
-
 /* ------------------- HEADER + MENU ------------------- */
 header {
   background: var(--vert-fonce);
@@ -172,8 +122,8 @@ header {
 }
 
 .logo-header {
-  width: 120px;
-  max-width: 24vw;
+  width: 170px;
+  max-width: 32vw;
   display: block;
   margin: 0 auto 0 auto;
   opacity: 0;
@@ -246,8 +196,8 @@ nav a:hover { color: var(--dore); }
 
 @media (max-width: 600px) {
   .intro-logo { width: 90vw; max-width: 140px; }
-  .intro-logo.animate-to-header { top: 16px; width: 60px; }
-  .logo-header { width: 60px; max-width: 60vw; }
+  .intro-logo.animate-to-header { top: 16px; width: 80px; }
+  .logo-header { width: 90px; max-width: 60vw; }
   header { padding: 12px 0 0 0; min-height: 50px; }
   h1 { font-size: 1.75rem; }
   .slogan { font-size: 1.07rem; }

@@ -8,7 +8,6 @@
   --texte-corps: 'Lato', Arial, sans-serif;
 }
 
-/* ---------- FOND KRAFT PARTOUT ---------- */
 body, html {
   margin: 0;
   padding: 0;
@@ -20,7 +19,7 @@ body, html {
   overflow-x: hidden;
 }
 
-/* ---------- INTRO OVERLAY ---------- */
+/* Animation intro */
 .intro-overlay {
   position: fixed;
   z-index: 9999;
@@ -58,26 +57,16 @@ body, html {
   transform: translate(-50%, -50%);
   z-index: 10;
 }
-
-.intro-logo.visible {
-  opacity: 1;
-}
+.intro-logo.visible { opacity: 1; }
 .intro-logo.animate-to-header {
-  /* Monte verticalement jusqu'à la position du header, sans changer de left */
-  top: 76px; /* Même coordonnée Y que le header sur desktop */
+  top: 80px;
   transform: translate(-50%, 0);
 }
 
+/* Responsive logo position */
 @media (max-width: 600px) {
-  .intro-logo {
-    width: 90vw;
-    max-width: 130px;
-    top: 50%;
-  }
-  .intro-logo.animate-to-header {
-    top: 42px;
-    max-width: 130px;
-  }
+  .intro-logo { width: 90vw; max-width: 130px; top: 50%; }
+  .intro-logo.animate-to-header { top: 36px; max-width: 130px; }
 }
 
 .intro-title {
@@ -91,15 +80,8 @@ body, html {
   text-align: center;
   z-index: 2;
 }
-
-.intro-title.visible {
-  opacity: 1;
-}
-
-.intro-title.fadeout {
-  opacity: 0;
-  transition: opacity 0.7s;
-}
+.intro-title.visible { opacity: 1; }
+.intro-title.fadeout { opacity: 0; transition: opacity 0.7s; }
 
 .intro-slogan {
   font-family: var(--texte-titre);
@@ -112,20 +94,12 @@ body, html {
   text-align: center;
   z-index: 2;
 }
+.intro-slogan.visible { opacity: 1; }
+.intro-slogan.fadeout { opacity: 0; transition: opacity 0.7s; }
 
-.intro-slogan.visible {
-  opacity: 1;
-}
-
-.intro-slogan.fadeout {
-  opacity: 0;
-  transition: opacity 0.7s;
-}
-
-.skip-btn {
+.skip-btn, .mute-btn {
   position: absolute;
   top: 2.2rem;
-  right: 2.5rem;
   background: rgba(255,255,255,0.82);
   color: var(--vert-fonce);
   border: 2px solid var(--dore);
@@ -137,21 +111,21 @@ body, html {
   transition: opacity 0.2s, background 0.2s;
   z-index: 1001;
 }
-.skip-btn:hover {
+.skip-btn { right: 2.5rem; }
+.mute-btn { left: 2.5rem; }
+.skip-btn:hover, .mute-btn:hover {
   opacity: 1;
   background: var(--dore);
   color: var(--vert-fonce);
 }
 
-/* --------- FADE-OVERLAY pour le site (hors header) --------- */
+/* Overlay qui fade le site */
 .site-fade-overlay {
   display: none;
   position: fixed;
   z-index: 800;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   pointer-events: none;
   background: var(--beige-kraft);
   opacity: 1;
@@ -162,7 +136,7 @@ body, html {
   transition: opacity 1.1s;
 }
 
-/* ----------- SITE HEADER ET LOGO APRÈS INTRO ---------- */
+/* Header + logo */
 header {
   background: var(--vert-fonce);
   color: var(--dore);
@@ -186,6 +160,17 @@ header {
   transition: opacity 0.6s;
 }
 
+.header-separator {
+  width: 98vw;
+  height: 2px;
+  margin: 0 auto;
+  background: linear-gradient(to right, transparent 0 3%, var(--dore) 10% 90%, transparent 97% 100%);
+  border-radius: 2px;
+  margin-bottom: -2px;
+  box-shadow: 0 1px 3px rgba(200,161,79,0.09);
+}
+
+/* Navigation */
 nav {
   background: var(--beige-kraft);
   padding: 1.1rem 0;
@@ -200,7 +185,6 @@ nav ul {
   padding: 0;
   list-style: none;
 }
-
 nav a {
   color: var(--vert-fonce);
   font-family: var(--texte-titre);
@@ -209,7 +193,6 @@ nav a {
   transition: color 0.18s;
   position: relative;
 }
-
 nav a::after {
   content: '';
   display: block;
@@ -221,13 +204,8 @@ nav a::after {
   left: 0;
   bottom: -2px;
 }
-
-nav a:hover::after {
-  width: 100%;
-}
-nav a:hover {
-  color: var(--dore);
-}
+nav a:hover::after { width: 100%; }
+nav a:hover { color: var(--dore); }
 
 .presentation {
   max-width: 750px;
@@ -238,7 +216,6 @@ nav a:hover {
   box-shadow: 0 4px 20px rgba(29,55,47,0.09);
   text-align: center;
 }
-
 .presentation h2 {
   font-family: var(--texte-titre);
   font-size: 2rem;
@@ -247,7 +224,8 @@ nav a:hover {
   letter-spacing: 1px;
 }
 
-footer {
+/* Footer arrondi + liseré doré */
+.site-footer {
   background: var(--vert-fonce);
   color: var(--dore);
   text-align: center;
@@ -256,38 +234,18 @@ footer {
   margin-top: 3rem;
   font-size: 1.05rem;
   border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -2px 12px rgba(29,55,47,0.09);
+  border-top: 2px solid var(--dore);
 }
 
 /* --- Responsive --- */
 @media (max-width: 600px) {
-  .logo-header {
-    width: 90vw;
-    max-width: 130px;
-  }
-  .intro-logo {
-    width: 90vw;
-    max-width: 130px;
-  }
-  .intro-logo.animate-to-header {
-    top: 42px;
-    max-width: 130px;
-  }
-  header {
-    padding: 12px 0 10px 0;
-    min-height: 80px;
-  }
-  h1 {
-    font-size: 1.75rem;
-  }
-  .slogan {
-    font-size: 1.07rem;
-  }
-  nav ul {
-    gap: 1.2rem;
-  }
-  .presentation {
-    padding: 1.2rem 0.7rem;
-    margin: 1.5rem 0.2rem;
-    font-size: 1.01rem;
-  }
+  .logo-header { width: 90vw; max-width: 130px; }
+  .intro-logo { width: 90vw; max-width: 130px; }
+  .intro-logo.animate-to-header { top: 36px; max-width: 130px; }
+  header { padding: 12px 0 10px 0; min-height: 80px; }
+  h1 { font-size: 1.75rem; }
+  .slogan { font-size: 1.07rem; }
+  nav ul { gap: 1.2rem; }
+  .presentation { padding: 1.2rem 0.7rem; margin: 1.5rem 0.2rem; font-size: 1.01rem; }
 }

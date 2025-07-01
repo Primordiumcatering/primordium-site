@@ -10,22 +10,24 @@
   <!-- Animation intro -->
   <div id="intro-overlay" class="intro-overlay">
     <div id="logo-container" class="logo-container">
-      <img id="primordium-logo" src="assets/logo_rond.svg" alt="Logo Primordium" />
+      <img id="intro-logo" class="intro-logo" src="assets/logo_rond.svg" alt="Logo Primordium" />
     </div>
-    <div id="intro-text" class="intro-text">
-      <h1>Primordium Catering</h1>
-      <p class="slogan">Du goût, du sens.</p>
+    <div id="intro-text" class="center-box">
+      <h1 id="intro-title" class="intro-title">Primordium Catering</h1>
+      <p id="intro-slogan" class="intro-slogan">Du goût, du sens.</p>
     </div>
     <button id="skip-btn" class="skip-btn" aria-label="Passer l'intro">Skip</button>
     <button id="mute-btn" class="mute-btn" aria-label="Désactiver/Activer le son">🔊</button>
   </div>
 
+  <div id="site-fade-overlay" class="site-fade-overlay"></div>
+
   <!-- Site principal -->
   <header class="site-header">
     <div class="header-inner">
-      <img id="header-logo" src="assets/logo_rond.svg" alt="Logo Primordium" />
-      <!-- <span class="header-title">Primordium Catering</span> -->
+      <img id="header-logo" class="logo-header" src="assets/logo_rond.svg" alt="Logo Primordium" />
     </div>
+    <div class="header-separator"></div>
     <nav>
       <ul>
         <li><a href="#">Accueil</a></li>
@@ -38,14 +40,13 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Ton contenu ici -->
-    <section>
+  <main id="main-content">
+    <section class="presentation">
       <h2>Bienvenue sur Primordium Catering, le site est en construction</h2>
       <p>
-                    Primordium Catering propose une restauration haut de gamme, mobile et écoresponsable pour les tournages de cinéma.
-                    Des repas de qualité, adaptés à toutes et tous, dans le respect du vivant, des saisons et de chaque équipe.
-                </p>
+        Primordium Catering propose une restauration haut de gamme, mobile et écoresponsable pour les tournages de cinéma.
+        Des repas de qualité, adaptés à toutes et tous, dans le respect du vivant, des saisons et de chaque équipe.
+      </p>
     </section>
   </main>
 

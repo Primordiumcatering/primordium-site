@@ -268,7 +268,7 @@ nav a:hover { color: var(--dore); }
  color: var(--dore);
   text-align: center;
   font-style: italic;
-  font-weight: 200;
+  font-weight: 200; !important;
   font-size: 0.8rem;
   margin-top: 2.5rem;
   display: block;

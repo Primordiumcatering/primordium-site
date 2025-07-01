@@ -170,7 +170,7 @@ header {
   max-width: 32vw;
   display: block;
   margin: 0 auto;
-  opacity: 0;
+  opacity: 1;
   pointer-events: auto;
   user-select: none;
   transition: opacity 0.6s;
@@ -262,4 +262,13 @@ nav a:hover { color: var(--dore); }
   .slogan { font-size: 1.07rem; }
   nav ul { gap: 1.1rem; }
   .presentation { padding: 1.2rem 0.7rem; margin: 1.5rem 0.2rem; font-size: 1.01rem; }
+}
+
+.email-link {
+  color: var(--dore);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.email-link:hover {
+  color: #9c7a28;
 }

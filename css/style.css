@@ -11,7 +11,7 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: var(--beige-kraft);
-  background-image: url('assets/texture-kraft.png');
+  background-image: url('../assets/texture-kraft.png');
   background-repeat: repeat;
   background-size: cover; /* change en 'cover' si tu veux un effet pleine page */
   background-position: center center;

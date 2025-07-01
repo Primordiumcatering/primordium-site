@@ -13,6 +13,9 @@ const audioTint = document.getElementById('audio-tint');
 const audioWhoosh = document.getElementById('audio-whoosh');
 let muted = false;
 
+// Toujours synchro mute-btn
+muteBtn.textContent = '🔊';
+
 function playSound(audio) {
   if (!muted) {
     audio.currentTime = 0;
@@ -40,7 +43,7 @@ function fadeOut(audio, duration = 400) {
 function showLogo() {
   logo.classList.add('visible');
   playSound(audioBreeze); // Brise dès que le logo apparait
-  setTimeout(showTitle, 600);
+  setTimeout(showTitle, 650);
 }
 
 function showTitle() {
@@ -50,29 +53,38 @@ function showTitle() {
 
 function showSlogan() {
   slogan.classList.add('visible');
-  setTimeout(startLogoMove, 1200);
+  setTimeout(startLogoMove, 1350);
 }
 
 function startLogoMove() {
+  // Nom et slogan disparaissent doucement
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
-  // Fade out la brise juste avant le tintement
-  fadeOut(audioBreeze, 400);
+
+  // On attend que le fade commence, puis logo monte
   setTimeout(() => {
+    fadeOut(audioBreeze, 400);
     playSound(audioTint); // Tintement pile au mouvement du logo
+
+    // Commence la montée du logo
     logo.classList.add('animate-to-header');
+
+    // Pendant la montée, on fait apparaître le logo du header (fade-in)
     setTimeout(() => {
-      finishIntro();
-    }, 1200); // durée de la montée
-  }, 200);
+      headerLogo.style.opacity = 1;
+      // Et on fade-out le logo d'intro en même temps
+      logo.style.opacity = 0;
+      setTimeout(() => {
+        finishIntro();
+      }, 350); // le temps que le headerLogo soit bien en place
+    }, 800); // Doit matcher la durée du move dans CSS (1.2s)
+  }, 300); // Commence la montée peu après le fade des textes
 }
 
 function finishIntro() {
   setTimeout(() => {
     playSound(audioWhoosh); // Whoosh quand le fade commence
-    // Affiche le site (header + logo déjà bien placés)
     mainContent.style.display = "block";
-    // Affiche le fadeOverlay sur tout sauf le header
     fadeOverlay.style.display = "block";
     setTimeout(() => {
       fadeOverlay.classList.add('fadeout');
@@ -82,7 +94,7 @@ function finishIntro() {
         logo.style.display = 'none';
       }, 1100);
     }, 80);
-  }, 150);
+  }, 100);
 }
 
 function skipIntro() {
@@ -92,7 +104,9 @@ function skipIntro() {
   slogan.classList.add('fadeout');
   fadeOut(audioBreeze, 200);
   playSound(audioTint);
+  headerLogo.style.opacity = 1;
   setTimeout(() => {
+    logo.style.opacity = 0;
     playSound(audioWhoosh);
     mainContent.style.display = "block";
     fadeOverlay.style.display = "block";
@@ -111,16 +125,18 @@ function startIntroSequence() {
   overlay.style.opacity = 1;
   overlay.style.display = "flex";
   logo.classList.remove('visible', 'animate-to-header');
+  logo.style.opacity = 1;
   logo.style.display = '';
   title.classList.remove('visible', 'fadeout');
   slogan.classList.remove('visible', 'fadeout');
+  headerLogo.style.opacity = 0; // cache header logo d'entrée
   fadeOverlay.style.display = "none";
   fadeOverlay.classList.remove('fadeout');
   // Noir → vert foncé
   setTimeout(() => {
     overlay.classList.add('fond-vert');
-    setTimeout(showLogo, 700);
-  }, 500);
+    setTimeout(showLogo, 800);
+  }, 400);
 }
 
 window.addEventListener('load', startIntroSequence);

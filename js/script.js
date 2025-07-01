@@ -64,34 +64,40 @@ function startLogoMove() {
     fadeOut(audioBreeze, 400);
     playSound(audioTint);
 
-    // On place le logo en fixed exactement où il est à l'écran
+    // Prends la position à l'écran
     const rect = logo.getBoundingClientRect();
+
+    // Passe en fixed, même position et même taille
     logo.style.position = 'fixed';
-    logo.style.left = (rect.left + rect.width / 2) + 'px';
-    logo.style.top = (rect.top + rect.height / 2) + 'px';
-    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+    logo.style.left = '50%';
+    logo.style.top = rect.top + rect.height / 2 + 'px';
     logo.style.width = rect.width + 'px';
+    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+    logo.style.marginBottom = "0";
 
-    // Force le navigateur à recalculer avant l'anim
-    void logo.offsetWidth;
+    void logo.offsetWidth; // force reflow
 
-    // On déclenche l'animation vers le header (verticale uniquement)
-    logo.style.transition = "top 1.1s cubic-bezier(.68,-0.55,.27,1.55), width 1.1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.55s";
-    logo.style.top = "36px"; // HAUTEUR EXACTE DU HEADER À AJUSTER SI BESOIN
-    logo.style.width = "170px"; // TAILLE DU LOGO HEADER
+    // Transition
+    logo.style.transition =
+      "top 1s cubic-bezier(.68,-0.55,.27,1.55), width 1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s";
 
-    // Fondu vitesse au début (tu peux aussi le faire à la fin)
+    // GO: anime vers la position B (header)
+    logo.style.top = "64px";      // <-- ajuste: Y du logo header
+    logo.style.width = "170px";   // <-- taille du logo header
+
+    // Opacité
     setTimeout(() => {
       logo.style.opacity = "0";
-    }, 700); // Ajuste ce timing selon effet voulu (700ms après début du move)
+    }, 800);
 
     setTimeout(() => {
       headerLogo.style.opacity = 1;
       document.getElementById('intro-center').style.display = 'none';
       finishIntro();
-    }, 1100); // Match la durée de ton animation top
+    }, 1000);
   }, 250);
 }
+
 
 
 function finishIntro() {

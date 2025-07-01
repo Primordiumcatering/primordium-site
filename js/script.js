@@ -13,7 +13,6 @@ const audioTint = document.getElementById('audio-tint');
 const audioWhoosh = document.getElementById('audio-whoosh');
 let muted = false;
 
-// Toujours synchro mute-btn
 muteBtn.textContent = '🔊';
 
 function playSound(audio) {
@@ -66,7 +65,7 @@ function startLogoMove() {
     fadeOut(audioBreeze, 400);
     playSound(audioTint); // Tintement pile au mouvement du logo
 
-    // Commence la montée du logo
+    // Commence la montée du logo (déjà position: absolute)
     logo.classList.add('animate-to-header');
 
     // Pendant la montée, on fait apparaître le logo du header (fade-in)
@@ -77,7 +76,7 @@ function startLogoMove() {
       setTimeout(() => {
         finishIntro();
       }, 350); // le temps que le headerLogo soit bien en place
-    }, 800); // Doit matcher la durée du move dans CSS (1.2s)
+    }, 800); // Doit matcher la durée du move dans CSS (1.1s)
   }, 300); // Commence la montée peu après le fade des textes
 }
 

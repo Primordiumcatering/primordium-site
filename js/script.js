@@ -82,9 +82,9 @@ function startLogoMove() {
       "top 1.1s cubic-bezier(.68,-0.55,.27,1.55), left 1.1s cubic-bezier(.68,-0.55,.27,1.55), width 1.1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s cubic-bezier(.68,-0.55,.27,1.55)";
 
     // 5. Anime vers le header
-    logo.style.top = "32px"; // AJUSTE LA VALEUR POUR QUE CE SOIT BIEN ALIGNÉ
-    logo.style.left = "calc(50% - 85px)"; // 85px = moitié de la width finale (ici 170px)
-    logo.style.width = "170px";
+    logo.style.top = "16px"; // AJUSTE LA VALEUR POUR QUE CE SOIT BIEN ALIGNÉ
+    logo.style.left = "calc(50% - 45px)"; // 85px = moitié de la width finale (ici 170px)
+    logo.style.width = "90px";
     logo.style.opacity = "0";
 
     setTimeout(() => {

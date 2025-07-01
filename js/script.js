@@ -59,42 +59,39 @@ function showSlogan() {
 function startLogoMove() {
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
-
   setTimeout(() => {
     fadeOut(audioBreeze, 400);
     playSound(audioTint);
 
-    // Prends la position à l'écran
+    // 1. Prends la position du logo (coin supérieur gauche)
     const rect = logo.getBoundingClientRect();
 
-    // Passe en fixed, même position et même taille
+    // 2. Passe en fixed à la même position (coin supérieur gauche)
     logo.style.position = 'fixed';
-    logo.style.left = '50%';
-    logo.style.top = rect.top + rect.height / 2 + 'px';
-    logo.style.width = rect.width + 'px';
-    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+    logo.style.left = rect.left + "px";
+    logo.style.top = rect.top + "px";
+    logo.style.width = rect.width + "px";
+    logo.style.transform = "none";
     logo.style.marginBottom = "0";
 
-    void logo.offsetWidth; // force reflow
+    // 3. Force le reflow
+    void logo.offsetWidth;
 
-    // Transition
+    // 4. Prépare la transition : top, left, width, opacity
     logo.style.transition =
-      "top 1s cubic-bezier(.68,-0.55,.27,1.55), width 1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s";
+      "top 1.1s cubic-bezier(.68,-0.55,.27,1.55), left 1.1s cubic-bezier(.68,-0.55,.27,1.55), width 1.1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s cubic-bezier(.68,-0.55,.27,1.55)";
 
-    // GO: anime vers la position B (header)
-    logo.style.top = "64px";      // <-- ajuste: Y du logo header
-    logo.style.width = "170px";   // <-- taille du logo header
-
-    // Opacité
-    setTimeout(() => {
-      logo.style.opacity = "0";
-    }, 800);
+    // 5. Anime vers le header
+    logo.style.top = "32px"; // AJUSTE LA VALEUR POUR QUE CE SOIT BIEN ALIGNÉ
+    logo.style.left = "calc(50% - 85px)"; // 85px = moitié de la width finale (ici 170px)
+    logo.style.width = "170px";
+    logo.style.opacity = "0";
 
     setTimeout(() => {
       headerLogo.style.opacity = 1;
       document.getElementById('intro-center').style.display = 'none';
       finishIntro();
-    }, 1000);
+    }, 1100);
   }, 250);
 }
 

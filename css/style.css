@@ -261,6 +261,22 @@ nav a:hover { color: var(--dore); }
   color: #9c7a28;
 }
 
+.left-align { text-align: left;
+            }
+
+.fin-doree {
+  color: var(--dore);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 2.5rem;
+}
+
+.highlight {
+  color: var(--dore);
+  font-weight: 600; /* Optionnel, pour donner un peu plus de poids visuel */
+}
+
 
 @media (max-width: 600px) {
   .intro-logo { width: 90vw; max-width: 140px; }

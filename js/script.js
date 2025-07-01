@@ -55,34 +55,38 @@ function showSlogan() {
   setTimeout(startLogoMove, 1350);
 }
 
+// --- ANIMATION VERS HEADER ---
 function startLogoMove() {
-  // Nom et slogan disparaissent doucement
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
-
-  // On attend que le fade commence, puis logo monte
   setTimeout(() => {
     fadeOut(audioBreeze, 400);
-    playSound(audioTint); // Tintement pile au mouvement du logo
+    playSound(audioTint);
 
-    // Commence la montée du logo (déjà position: absolute)
+    // -- Fix: passage logo en position fixed pour anim propre
+    const rect = logo.getBoundingClientRect();
+    logo.style.position = 'fixed';
+    logo.style.left = (rect.left + rect.width/2) + 'px';
+    logo.style.top = (rect.top + rect.height/2) + 'px';
+    logo.style.transform = 'translate(-50%, -50%) scale(1)';
+    // Force reflow
+    void logo.offsetWidth;
     logo.classList.add('animate-to-header');
 
-    // Pendant la montée, on fait apparaître le logo du header (fade-in)
     setTimeout(() => {
       headerLogo.style.opacity = 1;
-      // Et on fade-out le logo d'intro en même temps
       logo.style.opacity = 0;
       setTimeout(() => {
+        document.getElementById('intro-center').style.display = 'none';
         finishIntro();
-      }, 350); // le temps que le headerLogo soit bien en place
-    }, 800); // Doit matcher la durée du move dans CSS (1.1s)
-  }, 300); // Commence la montée peu après le fade des textes
+      }, 350);
+    }, 900);
+  }, 250);
 }
 
 function finishIntro() {
   setTimeout(() => {
-    playSound(audioWhoosh); // Whoosh quand le fade commence
+    playSound(audioWhoosh);
     mainContent.style.display = "block";
     fadeOverlay.style.display = "block";
     setTimeout(() => {
@@ -114,11 +118,11 @@ function skipIntro() {
       overlay.style.display = "none";
       fadeOverlay.style.display = "none";
       logo.style.display = 'none';
+      document.getElementById('intro-center').style.display = 'none';
     }, 600);
   }, 400);
 }
 
-// -------- ANIMATION SEQUENCE --------
 function startIntroSequence() {
   mainContent.style.display = "none";
   overlay.style.opacity = 1;
@@ -126,12 +130,17 @@ function startIntroSequence() {
   logo.classList.remove('visible', 'animate-to-header');
   logo.style.opacity = 1;
   logo.style.display = '';
+  logo.style.position = '';
+  logo.style.left = '';
+  logo.style.top = '';
+  logo.style.width = '';
+  logo.style.transform = '';
   title.classList.remove('visible', 'fadeout');
   slogan.classList.remove('visible', 'fadeout');
-  headerLogo.style.opacity = 0; // cache header logo d'entrée
+  headerLogo.style.opacity = 0;
   fadeOverlay.style.display = "none";
   fadeOverlay.classList.remove('fadeout');
-  // Noir → vert foncé
+  document.getElementById('intro-center').style.display = '';
   setTimeout(() => {
     overlay.classList.add('fond-vert');
     setTimeout(showLogo, 800);
@@ -147,6 +156,6 @@ muteBtn.addEventListener('click', () => {
   muteBtn.textContent = muted ? '🔇' : '🔊';
 });
 
-// Accessibilité : focus sur skip/mute
+// Accessibilité
 skipBtn.tabIndex = 0;
 muteBtn.tabIndex = 0;

@@ -72,10 +72,10 @@ function startLogoMove() {
     // Force reflow
     void logo.offsetWidth;
     logo.classList.add('animate-to-header');
+    logo.classList.add('fadeout'); // fade out du logo pendant la montée
 
     setTimeout(() => {
       headerLogo.style.opacity = 1;
-      logo.style.opacity = 0;
       setTimeout(() => {
         document.getElementById('intro-center').style.display = 'none';
         finishIntro();
@@ -102,14 +102,13 @@ function finishIntro() {
 
 function skipIntro() {
   // Lance direct la séquence finale avec sons courts
-  logo.classList.add('visible', 'animate-to-header');
+  logo.classList.add('visible', 'animate-to-header', 'fadeout');
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
   fadeOut(audioBreeze, 200);
   playSound(audioTint);
   headerLogo.style.opacity = 1;
   setTimeout(() => {
-    logo.style.opacity = 0;
     playSound(audioWhoosh);
     mainContent.style.display = "block";
     fadeOverlay.style.display = "block";
@@ -127,7 +126,7 @@ function startIntroSequence() {
   mainContent.style.display = "none";
   overlay.style.opacity = 1;
   overlay.style.display = "flex";
-  logo.classList.remove('visible', 'animate-to-header');
+  logo.classList.remove('visible', 'animate-to-header', 'fadeout');
   logo.style.opacity = 1;
   logo.style.display = '';
   logo.style.position = '';

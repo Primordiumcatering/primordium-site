@@ -252,6 +252,16 @@ nav a:hover { color: var(--dore); }
   width: 100%;
 }
 
+.email-link {
+  color: var(--dore);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.email-link:hover {
+  color: #9c7a28;
+}
+
+
 @media (max-width: 600px) {
   .intro-logo { width: 90vw; max-width: 140px; }
   .intro-logo.animate-to-header { top: 16px; width: 80px; }
@@ -264,11 +274,4 @@ nav a:hover { color: var(--dore); }
   .presentation { padding: 1.2rem 0.7rem; margin: 1.5rem 0.2rem; font-size: 1.01rem; }
 }
 
-.email-link {
-  color: var(--dore);
-  font-weight: 700;
-  text-decoration: underline;
-}
-.email-link:hover {
-  color: #9c7a28;
-}
+

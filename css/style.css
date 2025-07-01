@@ -38,15 +38,17 @@ main#main-content {
   width: 100vw; height: 100vh;
   background: #000;
   transition: background 1.3s cubic-bezier(.4,0,.2,1), opacity 0.7s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
 .intro-overlay.fond-vert {
   background: var(--vert-fonce);
 }
 
 .intro-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,25 +109,67 @@ main#main-content {
 .intro-slogan.visible { opacity: 1; }
 .intro-slogan.fadeout { opacity: 0; transition: opacity 0.7s; }
 
+/* Boutons intro - fixés aux coins écran */
+.skip-btn, .mute-btn {
+  position: fixed;
+  top: 32px;
+  background: rgba(255,255,255,0.82);
+  color: var(--vert-fonce);
+  border: 2px solid var(--dore);
+  border-radius: 1.5rem;
+  padding: 0.38rem 1.1rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  opacity: 0.78;
+  transition: opacity 0.2s, background 0.2s;
+  z-index: 1001;
+}
+.skip-btn { right: 36px; }
+.mute-btn { left: 36px; }
+.skip-btn:hover, .mute-btn:hover {
+  opacity: 1;
+  background: var(--dore);
+  color: var(--vert-fonce);
+}
+
+/* Overlay qui fade le site */
+.site-fade-overlay {
+  display: none;
+  position: fixed;
+  z-index: 800;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  background: var(--beige-kraft);
+  opacity: 1;
+  transition: opacity 1.1s;
+}
+.site-fade-overlay.fadeout {
+  opacity: 0;
+  transition: opacity 1.1s;
+}
+
 /* ------------------- HEADER + MENU ------------------- */
 header {
   background: var(--vert-fonce);
   color: var(--dore);
-  padding: 24px 0 0 0;
   text-align: center;
   position: relative;
   min-height: 70px;
   transition: padding 0.3s;
+  width: 100%;
 }
+
 .header-inner {
-  margin-bottom: 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .logo-header {
   width: 170px;
   max-width: 32vw;
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   opacity: 0;
   pointer-events: auto;
   user-select: none;
@@ -194,11 +238,26 @@ nav a:hover { color: var(--dore); }
   letter-spacing: 1px;
 }
 
+.site-footer {
+  background: var(--vert-fonce);
+  color: var(--dore);
+  text-align: center;
+  padding: 1.3rem 0;
+  letter-spacing: 1px;
+  font-size: 1.05rem;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -2px 12px rgba(29,55,47,0.09);
+  border-top: 2px solid var(--dore);
+  margin-top: auto;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .intro-logo { width: 90vw; max-width: 140px; }
   .intro-logo.animate-to-header { top: 16px; width: 80px; }
   .logo-header { width: 90px; max-width: 60vw; }
-  header { padding: 12px 0 0 0; min-height: 50px; }
+  .header-inner { padding-top: 16px; padding-bottom: 16px; }
+  header { min-height: 50px; }
   h1 { font-size: 1.75rem; }
   .slogan { font-size: 1.07rem; }
   nav ul { gap: 1.1rem; }

@@ -59,30 +59,40 @@ function showSlogan() {
 function startLogoMove() {
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
+
   setTimeout(() => {
     fadeOut(audioBreeze, 400);
     playSound(audioTint);
 
-    // -- Fix: passage logo en position fixed pour anim propre
+    // On place le logo en fixed exactement où il est à l'écran
     const rect = logo.getBoundingClientRect();
     logo.style.position = 'fixed';
-    logo.style.left = (rect.left + rect.width/2) + 'px';
-    logo.style.top = (rect.top + rect.height/2) + 'px';
+    logo.style.left = (rect.left + rect.width / 2) + 'px';
+    logo.style.top = (rect.top + rect.height / 2) + 'px';
     logo.style.transform = 'translate(-50%, -50%) scale(1)';
-    // Force reflow
+    logo.style.width = rect.width + 'px';
+
+    // Force le navigateur à recalculer avant l'anim
     void logo.offsetWidth;
-    logo.classList.add('animate-to-header');
-    logo.classList.add('fadeout'); // fade out du logo pendant la montée
+
+    // On déclenche l'animation vers le header (verticale uniquement)
+    logo.style.transition = "top 1.1s cubic-bezier(.68,-0.55,.27,1.55), width 1.1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.55s";
+    logo.style.top = "36px"; // HAUTEUR EXACTE DU HEADER À AJUSTER SI BESOIN
+    logo.style.width = "170px"; // TAILLE DU LOGO HEADER
+
+    // Fondu vitesse au début (tu peux aussi le faire à la fin)
+    setTimeout(() => {
+      logo.style.opacity = "0";
+    }, 700); // Ajuste ce timing selon effet voulu (700ms après début du move)
 
     setTimeout(() => {
       headerLogo.style.opacity = 1;
-      setTimeout(() => {
-        document.getElementById('intro-center').style.display = 'none';
-        finishIntro();
-      }, 350);
-    }, 900);
+      document.getElementById('intro-center').style.display = 'none';
+      finishIntro();
+    }, 1100); // Match la durée de ton animation top
   }, 250);
 }
+
 
 function finishIntro() {
   setTimeout(() => {

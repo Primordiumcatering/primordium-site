@@ -55,91 +55,51 @@ function showSlogan() {
   setTimeout(startLogoMove, 1350);
 }
 
-// --- ANIMATION VERS HEADER ---
+// --- Nouvelle séquence simplifiée : fondu général ---
 function startLogoMove() {
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
+
   setTimeout(() => {
     fadeOut(audioBreeze, 400);
     playSound(audioTint);
 
-    // 1. Prends la position du logo (coin supérieur gauche)
-    const rect = logo.getBoundingClientRect();
-
-    // 2. Passe en fixed à la même position (coin supérieur gauche)
-    logo.style.position = 'fixed';
-    logo.style.left = rect.left + "px";
-    logo.style.top = rect.top + "px";
-    logo.style.width = rect.width + "px";
-    logo.style.transform = "none";
-    logo.style.marginBottom = "0";
-
-    // 3. Force le reflow
-    void logo.offsetWidth;
-
-    // 4. Prépare la transition : top, left, width, opacity
-    logo.style.transition =
-      "top 1.1s cubic-bezier(.68,-0.55,.27,1.55), left 1.1s cubic-bezier(.68,-0.55,.27,1.55), width 1.1s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s cubic-bezier(.68,-0.55,.27,1.55)";
-
-    // 5. Anime vers le header
-    logo.style.top = "16px"; // AJUSTE LA VALEUR POUR QUE CE SOIT BIEN ALIGNÉ
-    logo.style.left = "calc(50% - 45px)"; // 85px = moitié de la width finale (ici 170px)
-    logo.style.width = "90px";
-    logo.style.opacity = "0";
-
     setTimeout(() => {
-      headerLogo.style.opacity = 1;
-      document.getElementById('intro-center').style.display = 'none';
-      finishIntro();
-    }, 1100);
+      // Fade out de toute l'overlay + logo + fond noir/vert
+      overlay.style.transition = "opacity 0.9s";
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        headerLogo.style.opacity = 1;
+        // Optionnel : joue le whoosh
+        playSound(audioWhoosh);
+      }, 900);
+    }, 300);
   }, 250);
 }
 
-
-
-function finishIntro() {
-  setTimeout(() => {
-    playSound(audioWhoosh);
-    mainContent.style.display = "block";
-    fadeOverlay.style.display = "block";
-    setTimeout(() => {
-      fadeOverlay.classList.add('fadeout');
-      setTimeout(() => {
-        overlay.style.display = "none";
-        fadeOverlay.style.display = "none";
-        logo.style.display = 'none';
-      }, 1100);
-    }, 80);
-  }, 100);
-}
-
 function skipIntro() {
-  // Lance direct la séquence finale avec sons courts
-  logo.classList.add('visible', 'animate-to-header', 'fadeout');
+  // Saute direct au fade final
   title.classList.add('fadeout');
   slogan.classList.add('fadeout');
   fadeOut(audioBreeze, 200);
   playSound(audioTint);
-  headerLogo.style.opacity = 1;
+  overlay.style.transition = "opacity 0.45s";
+  overlay.style.opacity = "0";
   setTimeout(() => {
-    playSound(audioWhoosh);
+    overlay.style.display = "none";
     mainContent.style.display = "block";
-    fadeOverlay.style.display = "block";
-    fadeOverlay.classList.add('fadeout');
-    setTimeout(() => {
-      overlay.style.display = "none";
-      fadeOverlay.style.display = "none";
-      logo.style.display = 'none';
-      document.getElementById('intro-center').style.display = 'none';
-    }, 600);
-  }, 400);
+    headerLogo.style.opacity = 1;
+    playSound(audioWhoosh);
+  }, 450);
 }
 
 function startIntroSequence() {
   mainContent.style.display = "none";
   overlay.style.opacity = 1;
-  overlay.style.display = "flex";
-  logo.classList.remove('visible', 'animate-to-header', 'fadeout');
+  overlay.style.display = "block";
+  logo.classList.remove('visible', 'fadeout');
   logo.style.opacity = 1;
   logo.style.display = '';
   logo.style.position = '';

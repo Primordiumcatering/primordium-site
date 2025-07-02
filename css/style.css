@@ -283,28 +283,19 @@ nav a:hover { color: var(--dore); }
   font-weight: 600; /* Optionnel, pour donner un peu plus de poids visuel */
 }
 
-.social-links {
-  margin-top: 1.5rem;
+.icon-social {
+  width: 48px;
+  height: 48px;
+  margin-right: 1.5rem;
+  transition: filter 0.25s, transform 0.15s;
+  filter: brightness(0) saturate(100%) invert(22%) sepia(33%) saturate(1198%) hue-rotate(108deg) brightness(97%) contrast(94%);
 }
-
-.social-links a {
-  margin-right: 1rem;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.social-links a:last-child {
+.icon-social:last-child {
   margin-right: 0;
 }
-
-.social-links img {
-  filter: brightness(0) saturate(100%) invert(22%) sepia(33%) saturate(1198%) hue-rotate(108deg) brightness(97%) contrast(94%);
-  vertical-align: middle;
-}
-
-.social-links a:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 4px #C8A14F); /* effet doré léger au survol */
+.social-links a:hover .icon-social {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(610%) hue-rotate(14deg) brightness(98%) contrast(101%);
+  transform: scale(1.15);
 }
 
 @media (max-width: 600px) {

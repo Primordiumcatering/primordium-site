@@ -323,3 +323,16 @@ nav a:hover { color: var(--dore); }
   nav ul { gap: 1.1rem; }
   .presentation { padding: 1.2rem 0.7rem; margin: 1.5rem 0.2rem; font-size: 1.01rem; }
 }
+/* Ajustement menu sur petits écrans uniquement */
+@media (max-width: 600px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

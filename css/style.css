@@ -243,18 +243,16 @@ nav a:hover { color: var(--dore); }
 }
 
 .site-footer {
-  background: var(--vert-fonce);
+  background: transparent;   /* important */
   color: var(--dore);
   text-align: center;
   padding: 1.3rem 0;
   letter-spacing: 1px;
   font-size: 1.05rem;
-  border-radius: 1rem 1rem 0 0;
-  box-shadow: 0 -2px 12px rgba(29,55,47,0.09);
-  border-top: 2px solid var(--dore);
   margin-top: auto;
   width: 100%;
 }
+
 
 .email-link {
   color: var(--dore);
@@ -336,12 +334,13 @@ nav a:hover { color: var(--dore); }
     padding: 0.2rem 0.4rem;
   }
 }
-/* Footer en bulle fine */
+/* Footer en bulle fine avec bordure dorée */
 .site-footer-inner {
-  max-width: 1000px;        /* largeur équilibrée */
-  margin: 0 auto;           /* centré */
-  padding: 0.8rem 1.5rem;   /* bulle fine */
+  max-width: 1000px;                           /* largeur de la bulle */
+  margin: 0 auto;                               /* centrage */
+  padding: 0.8rem 1.5rem;                        /* hauteur fine */
   background: var(--vert-fonce);
-  border-radius: 30px;      /* arrondi très doux */
-  box-shadow: 0 -3px 16px rgba(29,55,47,0.15);
+  border-radius: 30px;                           /* forme bulle */
+  border: 2px solid var(--dore);                 /* bordure dorée */
+  box-shadow: 0 -3px 16px rgba(29,55,47,0.15);   /* ombre subtile */
 }

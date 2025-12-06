@@ -336,3 +336,10 @@ nav a:hover { color: var(--dore); }
     padding: 0.2rem 0.4rem;
   }
 }
+/* Rendre visibles les arrondis du footer sur desktop */
+@media (min-width: 900px) {
+  .site-footer {
+    margin: 0 1.5rem; /* petit espace pour révéler les coins */
+    border-radius: 1rem 1rem 0 0; /* arrondis visibles */
+  }
+}

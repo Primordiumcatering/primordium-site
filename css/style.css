@@ -336,11 +336,11 @@ nav a:hover { color: var(--dore); }
 }
 /* Footer en bulle fine avec bordure dorée */
 .site-footer-inner {
-  max-width: 1000px;                           /* largeur de la bulle */
-  margin: 0 auto;                               /* centrage */
-  padding: 0.15rem 1rem;                        /* hauteur fine */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.35rem 1.2rem;
   background: var(--vert-fonce);
-  border-radius: 30px;                           /* forme bulle */
-  border: 2px solid var(--dore);                 /* bordure dorée */
-  box-shadow: 0 -3px 16px rgba(29,55,47,0.15);   /* ombre subtile */
+  border-radius: 30px;
+  border: 2px solid var(--dore);
+  box-shadow: 0 -3px 16px rgba(29,55,47,0.15);
 }

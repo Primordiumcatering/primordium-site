@@ -336,7 +336,7 @@ nav a:hover { color: var(--dore); }
 }
 /* Footer en bulle fine avec bordure dorée */
 .site-footer-inner {
-  max-width: 1000px;
+  max-width: 520px;
   margin: 0 auto;
   padding: 0.35rem 1.2rem;
   background: var(--vert-fonce);

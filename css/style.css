@@ -338,7 +338,7 @@ nav a:hover { color: var(--dore); }
 .site-footer-inner {
   max-width: 1000px;                           /* largeur de la bulle */
   margin: 0 auto;                               /* centrage */
-  padding: 0.8rem 1.5rem;                        /* hauteur fine */
+  padding: 0.15rem 1rem;                        /* hauteur fine */
   background: var(--vert-fonce);
   border-radius: 30px;                           /* forme bulle */
   border: 2px solid var(--dore);                 /* bordure dorée */

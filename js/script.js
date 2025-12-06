@@ -131,3 +131,18 @@ muteBtn.addEventListener('click', () => {
 // Accessibilité
 skipBtn.tabIndex = 0;
 muteBtn.tabIndex = 0;
+
+// ======================
+// Menu mobile
+// ======================
+document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainNav = document.getElementById("main-nav");
+
+  if (!navToggle || !mainNav) return;
+
+  navToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+});
